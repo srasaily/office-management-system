@@ -48,12 +48,14 @@ Tip 2: you can also add an image using data-image tag
             <p>User Profile</p>
           </a>
         </li>
+        <!--
         <li class="nav-item ">
           <a class="nav-link" href="#">
             <i class="material-icons">content_paste</i>
             <p>Attendance</p>
           </a>
         </li>
+        -->
         <li class="nav-item ">
           <a class="nav-link" href="#">
             <i class="material-icons">attach_money</i>
