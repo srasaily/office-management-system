@@ -14,11 +14,12 @@
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="../assets/css/material-dashboard.css?v=2.0.0">
+  <link rel="stylesheet" href="{{asset('assets/css/material-dashboard.css?v=2.0.0')}}">
   <!-- Documentation extras -->
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/assets-for-demo/demo.css" rel="stylesheet" />
+  <link href="{{asset('assets/assets-for-demo/demo.css')}}" rel="stylesheet" />
   <!-- iframe removal -->
+  {{--@yield('style')--}}
 </head>
 
 <body class="">
@@ -48,12 +49,14 @@ Tip 2: you can also add an image using data-image tag
             <p>User Profile</p>
           </a>
         </li>
+        <!--
         <li class="nav-item ">
           <a class="nav-link" href="#">
             <i class="material-icons">content_paste</i>
             <p>Attendance</p>
           </a>
         </li>
+        -->
         <li class="nav-item ">
           <a class="nav-link" href="#">
             <i class="material-icons">attach_money</i>

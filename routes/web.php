@@ -11,6 +11,13 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', function () {
-    return view('dashboard');
+    return view('welcome');
 });
+
+Route::resource('users','UsersController');
+

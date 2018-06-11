@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'name', 'address', 'city', 'country', 'about_me', 'image', 'password'
     ];
 
     /**
@@ -24,6 +24,49 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+         'remember_token',
     ];
+
+//    public function getDisplayNameAttribute($name)
+//    {
+//        return ucwords($name);
+//    }
+//
+//    public function getDisplayUsernameAttribute($username)
+//    {
+////        if (!$username)
+////        {
+////            return "Not Available";
+////        }else{
+////            return ($username);
+////        }
+//        return ($this->username)? $this->username : "Not Available";
+//    }
+//
+//    public function getDisplayAddressAttribute($address)
+//    {
+//        return $this->address ? ucwords($this->address) : "Not Available";
+//    }
+//
+//    public function getDisplayCityAttribute($city)
+//    {
+//        return $this->city ? ucwords($this->city) : "Not Available";
+//    }
+//
+//    public function getDisplayCountryAttribute($country)
+//    {
+//        return $this->country ? ucwords($this->country) : "Not Available";
+//    }
+//
+//    public function getDisplayImageAttribute($image)
+//    {
+//        return $this->image ? $this->image : "images/avatar.png";
+//    }
+//
+//    public function getDisplayAboutMeAttribute($aboutMe)
+//    {
+//        return $this->aboutMe ? $this->aboutMe : "Not Available";
+//    }
 }
+
+
