@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\User;
-use App\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +17,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -26,66 +29,90 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view ('users.create');
+        return view('users.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(UserRequest $request)
     {
-       // dd($request->all());
+        //dd($request);
+        if ($request->image) {
+            $imagePath = Storage::disk('public')->put('images', $request->image);
+        }
+        else {
+            $imagePath = null;
+        }
+        //$imagePath = $request->image->store('public/images'); //storage/app/public/images. Here the path storage/app is default so no need to mention
         $data = $request->all();
-       User::create($data);
+        $data['image'] = $imagePath;
+        if (User::create($data)) {
+            flash('User created successfully!')->success();
+        } else {
+            flash('Could not create user!')->error();
+        }
 
-       return "User created."; //return listing page ie. index view
+        return redirect()->route('users.index'); //return listing page ie. index view
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('users.edit', compact('user'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Users $users
      * @return \Illuminate\Http\Response
      */
-    public function show(Users $users)
+    public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        //dd($user);
+
+        //dd($user);
+        return view('users.show', compact('user'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Users  $users
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Users $users)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Users  $users
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Users               $users
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, Users $users)
+    public function update($id, UserRequest $request)
     {
-        //
+        $user = User::findOrFail($id);
+        $data = $request->all();
+        $user->update($data);
+
+        return redirect()->route('users.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Users $users
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users $users)
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        if($user->delete()){
+            flash('User deleted successfully!')->success();
+        } else{
+            flash('Could not delete user!')->error();
+        }
+        return redirect()->route('users.index');
     }
 }

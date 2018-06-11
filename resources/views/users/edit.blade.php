@@ -10,12 +10,12 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Create User</h4>
+          <h4 class="card-title">Edit User</h4>
         </div>
         <div class="card-body">
-          <br>
-          {!! Form::open(['route' => 'users.store', 'method' => 'post', 'files' => true]) !!}
-          @include('users.userForm', ['editAction' => false])
+          {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PATCH']) !!}
+          {{csrf_field()}}
+          @include('users.userForm', ['editAction' => true])
           {!! Form::close() !!}
         </div>
       </div>
