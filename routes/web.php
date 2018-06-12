@@ -19,5 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('users','UsersController');
+Route::resource('users','UsersController')->middleware('auth');
+Route::resource('expense', 'ExpenseController');
 

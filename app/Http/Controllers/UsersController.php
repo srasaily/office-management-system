@@ -18,7 +18,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-
+        //dd($users);
         return view('users.index', compact('users'));
     }
 
@@ -49,6 +49,8 @@ class UsersController extends Controller
         }
         //$imagePath = $request->image->store('public/images'); //storage/app/public/images. Here the path storage/app is default so no need to mention
         $data = $request->all();
+        //dd($data);
+        $data['password'] = bcrypt($data['password']);
         $data['image'] = $imagePath;
         if (User::create($data)) {
             flash('User created successfully!')->success();
@@ -75,8 +77,6 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        //dd($user);
-
         //dd($user);
         return view('users.show', compact('user'));
 

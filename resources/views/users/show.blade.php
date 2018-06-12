@@ -18,7 +18,7 @@
             <div class="tim-typo">
               <span class="tim-note" style="color:#4e555b; font-size: large">Username</span>
               <p class="text-primary" style="font-size: medium">
-                {{$user->username ? $user->username : 'Not Available'}}
+                {{$user->username ? $user->username : 'N/A'}}
               </p>
             </div>
             <div class="tim-typo">
@@ -30,31 +30,31 @@
             <div class="tim-typo">
               <span class="tim-note" style="color:#4e555b; font-size: large">Name</span>
               <p class="text-primary" style="font-size: medium">
-                {{$user->name ? $user->name : 'Not Available'}}
+                {{$user->name ? $user->name : 'N/A'}}
               </p>
             </div>
             <div class="tim-typo">
               <span class="tim-note" style="color:#4e555b; font-size: large">Address</span>
               <p class="text-primary" style="font-size: medium">
-                {{$user->address ? $user->address : 'Not Available'}}
+                {{$user->address ? $user->address : 'N/A'}}
               </p>
             </div>
             <div class="tim-typo">
               <span class="tim-note" style="color:#4e555b; font-size: large">City</span>
               <p class="text-primary" style="font-size: medium">
-                {{$user->city ? $user->city : 'Not Available'}}
+                {{$user->city ? $user->city : 'N/A'}}
               </p>
             </div>
             <div class="tim-typo">
               <span class="tim-note" style="color:#4e555b; font-size: large">Country</span>
               <p class="text-primary" style="font-size: medium">
-                {{$user->country ? $user->country : 'Not Available'}}
+                {{$user->country ? $user->country : 'N/A'}}
               </p>
             </div>
             <div class="tim-typo">
               <span class="tim-note" style="color:#4e555b; font-size: large">About me</span>
               <p class="text-primary" style="font-size: medium">
-                {{$user->about_me ? $user->about_me : 'Not Available'}}
+                {{$user->about_me ? $user->about_me : 'N/A'}}
               </p>
             </div>
           </div>

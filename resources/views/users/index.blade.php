@@ -4,6 +4,11 @@
   @endsection
   @section('content')
     <div class="row">
+    <div class="col-md-12">
+      <a href="{{ route('users.create') }}" class="btn btn-primary btn-round pull-right">Create User</a>
+    </div>
+    </div>
+    <div class="row">
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
@@ -38,13 +43,13 @@
                       {{$count++}}
                     </td>
                     <td class="text-primary">
-                      <a href="/users/{{$user->id}}">{{$user->name}}</a>
+                      <a href="/users/{{$user->id}}"> {{$user->name}} </a>
                     </td>
                     <td>
                       {{$user->email}}
                     </td>
                     <td>
-                      {{$user->address}}
+                      {{$user->address ? $user->address : 'N/A'}}
                     </td>
                     <td>
                       <a href="{{route('users.edit',$user->id)}}" title="edit" class="material-icons">edit</a>
