@@ -2,7 +2,7 @@
     <div class="col-md-4" style="margin-left: 30%">
       <div class="card card-profile">
         <div class="card-avatar">
-          <img class="img" src="{{ isset($user) && $user->image ? asset('storage/'.$user->image) : asset('default/avatar.png') }}"/>
+          <img class="img" src="{{ isset($user) && $user->image   ? asset('storage/'.$user->image) : asset('default/avatar.png') }}"/>
         </div>
         <div class="card-body">
           <input type="file" name="image">
@@ -18,7 +18,7 @@
     <div class="form-group">
       <label class="bmd-label-floating">Username *</label>
       {{--<input type="text" class="form-control" name="username">--}}
-      {!! Form::text('username', null, ['class' => 'form-control']) !!} {{--//laravel collective--}}
+      {!! Form::text('username', null, ['class' => 'form-control']) !!} {{--laravel collective for model binding--}}
       @if($errors->first('username'))
         <span style="color: red"> {{$errors->first('username')}}</span>
       @endif
