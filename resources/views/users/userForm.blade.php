@@ -108,5 +108,5 @@
     </div>
   </div>
 </div>
-<button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+<button type="submit" class="btn btn-primary pull-right">Save</button>
 <div class="clearfix"></div>

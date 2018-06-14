@@ -4,22 +4,19 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExpensesTable extends Migration
+class CreateAttendancesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *`
      * @return void
      */
     public function up()
     {
-        Schema::create('expenses', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('expense_date');
-            $table->string('title');
-            $table->float('amount_spent');
-            $table->string('remarks')->nullable();
             $table->integer('user_id');
+            $table->boolean('attendance');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateExpensesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expenses');
+        Schema::dropIfExists('attendances');
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class UsersController extends Controller
 {
 
-    /**
+    /**text-primary
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

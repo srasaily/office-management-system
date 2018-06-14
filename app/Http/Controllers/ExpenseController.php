@@ -43,10 +43,17 @@ class ExpenseController extends Controller
      */
     public function store(ExpenseRequest $request)
     {
-        $data               = $request->all();
-        $data['created_by'] = Auth::user()->id;
+        $data = $request->all();
+//        $data['created_by'] = Auth::user()->id;
+        // Expense::create($data);
+        $user          = Auth::user();
+        $createExpense = $user->expenses()->create($data);
 
-        Expense::create($data);
+        if ($createExpense) {
+            flash('Expense created successfully')->success();
+        } else {
+            flash('Expense could not be created')->error();
+        }
 
         return redirect()->route('expense.index');
     }
@@ -98,8 +105,15 @@ class ExpenseController extends Controller
      * @param  \App\Expense $expense
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Expense $expense)
+    public function destroy($id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+        if ($expense->delete()) {
+            flash('Expense deleted successfully')->success();
+        } else {
+            flash('Expense could not be deleted')->error();
+        }
+
+        return redirect()->route('expense.index');
     }
 }
