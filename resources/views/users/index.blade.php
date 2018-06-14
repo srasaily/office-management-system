@@ -8,6 +8,7 @@
       <a href="{{ route('users.create') }}" class="btn btn-primary btn-round pull-right">Create User</a>
     </div>
     </div>
+    <br>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -53,7 +54,7 @@
                     </td>
                     <td>
                       <a href="{{route('users.edit',$user->id)}}" title="edit" class="material-icons">edit</a>
-                      {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'POST']) !!}
+                      {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'POST', 'id' => 'delete-user-form']) !!}
                       {{method_field('DELETE')}}
                       {{csrf_field()}}
                       <button title="delete" id="delete-user" class="material-icons" style="color: purple; margin-left: 40%">delete</button>
@@ -70,12 +71,16 @@
     </div>
   @endsection
 
-  {{--@section('script')--}}
-    {{--<script type="text/javascript">--}}
-      {{--$('#delete-user').on('click', function(event){--}}
-        {{--event.preventDefault();--}}
-        {{--alert('sadfasdf');--}}
-      {{--});--}}
-    {{--</script>--}}
-    {{--@endsection--}}
+  @section('script')
+    <script>
+      $(document).ready(function() {
+        $("button#delete-user").on('click', function(event) {
+          event.preventDefault();
+          if(confirm('Are you sure you want to delete this?')){
+            $("#delete-user-form").submit();
+          }
+        });
+      });
+    </script>
+  @endsection
 

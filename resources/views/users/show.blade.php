@@ -2,17 +2,13 @@
 @section('title')
   Details
 @endsection
-
 @section('content')
   <div class="card">
     <div class="card-header card-header-primary">
       <h4 class="card-title">Employee Details</h4>
     </div>
-
       <div id="information">
-        <div class="card-title">
-          <h2>Details</h2>
-        </div>
+          <br><br>
         <div class="row">
           <div class="col-md-8">
             <div class="tim-typo">
